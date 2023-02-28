@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+
+{% block nav %}
+<a href="/read">
+    <input class='btn btn-dark' type='button' value='Home'>
+</a>
+{% endblock %}
+
+
+{% block content %}
+<h1>Create User</h1>
+<form action="/create_user" method="POST">
+    <div class="mb-3">
+        <label for="fname" class="form-label">First Name:</label>
+        <input name='fname'type="textt" class="form-control" id="first_name">
+    </div>
+    <div class="mb-3">
+        <label for="lname" class="form-label">Last Name:</label>
+        <input name='lname'type="text" class="form-control" id="last_name">
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">Email:</label>
+        <input name='email' type="text" class="form-control" id="email">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<style>
+    form {
+        width: 65%;
+    }
+</style>
+
+
+{% endblock %}
