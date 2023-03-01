@@ -26,16 +26,54 @@ class User:
     #CREATE
     @classmethod
     def save(cls, data):
-        query = "INSERT INTO users ( first_name , last_name , email , created_at, updated_at ) VALUES ( %(fname)s , %(lname)s , %(email)s , NOW() , NOW() );"
+        query = """
+                INSERT INTO users 
+                ( first_name , last_name , email , created_at, updated_at ) 
+                VALUES 
+                ( %(first_name)s , %(last_name)s , %(email)s , NOW() , NOW() )
+                ;"""
         return connectToMySQL(cls.DB).query_db( query, data )
     #READ 
+    
+    
     @classmethod
     def get_all(cls):
-        query = "SELECT * FROM users;"
+        query = """SELECT * 
+                FROM users
+                ;"""
         results = connectToMySQL(cls.DB).query_db(query)
         
-        all_users = []
+        users = []
         for row in results:
-            all_users.append(cls(row))
-            
-        return all_users
+            users.append(cls(row))
+        return users
+
+    @classmethod 
+    def get_one(cls, data):
+        query = """SELECT * 
+                FROM users 
+                WHERE id = %(id)s
+                ;"""
+        results = connectToMySQL(cls.DB).query_db( query, data)
+        return cls(results[0])
+    #UPDATE
+    @classmethod
+    def update(cls, data):
+        query = """
+                UPDATE users 
+                SET first_name = %(first_name)s, last_name = %(last_name)s, email = %(email)s, updated_at = NOW() 
+                WHERE id = %(id)s;
+                """
+        results = connectToMySQL(cls.DB).query_db(query, data)
+        
+        return results
+    
+    #DELETE
+    @classmethod
+    def delete(cls, data):
+        query = """
+                DELETE FROM users
+                WHERE id = %(id)s;
+                """
+        results = connectToMySQL(cls.DB).query_db(query, data)
+        return results

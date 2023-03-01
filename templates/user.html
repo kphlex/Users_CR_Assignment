@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+    <h3>User ID: {{ user.id }}</h3>
+    <p>Full Name: {{ user.first_name }} {{ user.last_name }}</p>
+    <p>Email: {{ user.email }}</p>
+    <p>Created on: {{ user.created_at.strftime('%b %d %Y') }}</p>
+    <p>Last Updated: {{ user.updated_at.strftime('%b %d %Y') }}</p>
+    <div>
+        <a href='/user/edit/{{ user.id }}'>Edit</a> | <a href='/user/delete/{{ user.id }}'>Delete</a>
+    </div>
+
+
+{% endblock %}

@@ -1,13 +1,6 @@
 {% extends 'layout.html' %}
 
 
-{% block nav %}
-<a href="/">
-    <input class='btn btn-dark btn-lg' type='reset' value='Add New User'>
-</a>
-{% endblock %}
-
-
 
 {% block content %}
 
@@ -18,16 +11,23 @@
             <th>Last Name</th>
             <th>Email</th>
             <th>Created</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
-        {% for one_user in all_users %}
+        {% for user in users %}
         <tr>
-            <td>{{ one_user.first_name }}</td>
-            <td>{{ one_user.last_name }}</td>
-            <td>{{ one_user.email }}</td>
-            <td>{{ one_user.created_at }}</td>
+            <td>{{ user.first_name }}</td>
+            <td>{{ user.last_name }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.created_at.strftime('%b %d %Y') }}</td>
+            <td><a href='/user/show/{{ user.id }}'>Show</a> | <a href='/user/edit/{{ user.id }}'>Edit</a> | <a href='/user/delete/{{ user.id }}'>Delete</a></td>
         </tr>
+        <style>
+            a {
+                font-size: 13px;
+            }
+        </style>
         {% endfor %}
     </tbody>
 </table>
