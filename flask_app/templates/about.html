@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+    <h3>What is CRUD?</h3>
+    <p>CRUD is methods we use to interact with our databases utilizing queries<br>
+        Check this <a href="https://www.freecodecamp.org/news/crud-operations-explained/">link</a> for more detailed information on CRUD.</p>
+    <ul>
+        <li>Create</li>
+        <p>Create a entry in database by using the query:</p>
+            "INSERT INTO your_db_name<br>
+            (your_first_column_name, your_second_column_name, your_third_column_name)<br>VALUES (first, second, third);" </p>
+        <li>Read</li>
+        <p>Read all entries in database by using the query:</p>
+            "SELECT * FROM your_db_name;"</p>
+        <li>Update</li>
+        <p>Update an entry in database by running the query:</p>
+            "UPDATE your_db_name<br> 
+            SET your_first_column_name = value, your_second_column_name = value, your_third_column_name = value<br>
+            WHERE id = id # to update;"</p>
+        <li>Delete</li>
+        <p>Delete an entry in database by running the query:</p>
+            "DELETE FROM your_db_name<br>
+            WHERE id = id # to delete;"</p>
+    </ul>
+    <h3>What tools are used for this application?</h3>
+        <p>Front-end: HTML, CSS, Bootstrap, JQuery </p>
+        <p>Back-end: Flask, Python, MySQL</p>
+
+<style>
+    li {
+        font-weight: bold;
+    }
+</style>
+{% endblock %}

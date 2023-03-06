@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+
+
+{% block content %}
+<h1>Create User</h1>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+<form action="/create_user" method="POST">
+    <input type="hidden" name="id">
+    <div class="mb-3">
+        <label for="first_name" class="form-label">First Name:</label>
+        <input name='first_name'type="text" value='{{ session["first_name"] }}'class="form-control" id="first_name">
+    </div>
+    <div class="mb-3">
+        <label for="last_name" class="form-label">Last Name:</label>
+        <input name='last_name'type="text" value='{{ session["last_name"]}}'class="form-control" id="last_name">
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">Email:</label>
+        <input name='email' type="text" value='{{ session["email"]}}'class="form-control" id="email">
+    </div>
+    <button type="submit" class="btn btn-dark">Submit</button>
+</form>
+<style>
+    form {
+        width: 65%;
+    }
+    p {
+        color: red;
+    }
+</style>
+
+
+{% endblock %}
